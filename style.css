@@ -24,11 +24,29 @@
   overflow: hidden;
 }
 
-.carrousel__figure img {
+.carrousel__img {
   position: absolute;
   top: 0;
   left: 0;
   object-fit: cover;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.carrousel__img--activer{
+  opacity: 1;
+}
+
+.carrousel__form{
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.carrousel__rad{
+  display: inline-block;
+  margin: 5px;
 }
