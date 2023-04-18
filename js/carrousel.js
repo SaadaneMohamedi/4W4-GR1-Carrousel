@@ -7,7 +7,9 @@
     let carrousel__form = document.querySelector('.carrousel__form');
     let galerie = document.querySelector('.galerie');
     let galerie__img = galerie.querySelectorAll('img');
-    let ancien_index = 1;
+    let ancien_index = -1;
+    let position = 0;
+    let index = 0;
 
     boutcarrousel__ouvrir.addEventListener('mousedown', function () { 
         carrousel.classList.add('carrousel--ouvrir')
@@ -19,6 +21,11 @@
 
     function remplir_carrousel() {
         for (const element of galerie__img) {
+            element.dataset.index = position;
+            element.addEventListener('mousedown', function () {
+                index = this.dataset.index;
+                afficher_image(index);
+            });
             creation_img_carrousel(element);
             creation_radio_carrousel();
         }
@@ -31,8 +38,6 @@
         carrousel__figure.appendChild(img);
     }
 
-    let position = 0;
-
     function creation_radio_carrousel() {
         let rad = document.createElement('input');
         rad.setAttribute('type', 'radio');
@@ -43,13 +48,17 @@
         carrousel__form.appendChild(rad);
         rad.addEventListener('mousedown', function(){
             index = this.dataset.index;
-            if (ancien_index != -1) {
-                //carrousel__figure.children[ancien_index].style.opacity = 0;
-                carrousel__figure.children[ancien_index].classList.remove('carrousel__img--activer');
-            }
-            //carrousel__figure.children[this.dataset.index].style.opacity = 1;
-            carrousel__figure.children[this.dataset.index].classList.add('carrousel__img--activer')
-            ancien_index = index;
-        })
+            afficher_image(index);
+        });
+    }
+
+    function afficher_image(index) {
+        if (ancien_index != -1) {
+            //carrousel__figure.children[ancien_index].style.opacity = 0;
+            carrousel__figure.children[ancien_index].classList.remove('carrousel__img--activer');
+        }
+        //carrousel__figure.children[this.dataset.index].style.opacity = 1;
+        carrousel__figure.children[index].classList.add('carrousel__img--activer')
+        ancien_index = index;
     }
 })()
