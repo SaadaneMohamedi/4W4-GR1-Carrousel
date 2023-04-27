@@ -21,6 +21,8 @@ function generer_boite(){
     return '<button class="carrousel__ouvrir">Ouvrir le carrousel</button>
             <div class="carrousel">
                 <button class="carrousel__x">X</button>
+                <button class="carrousel__fleche_droite">❯</button>
+                <button class="carrousel__fleche_gauche">❮</button>
                 <figure class="carrousel__figure"></figure>
                 <form class="carrousel__form"></form>
             </div>';

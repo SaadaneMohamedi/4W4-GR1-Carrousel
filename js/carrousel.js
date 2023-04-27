@@ -3,6 +3,8 @@
     let boutcarrousel__ouvrir = document.querySelector('.carrousel__ouvrir');
     let carrousel = document.querySelector('.carrousel');
     let carrousel__x = document.querySelector('.carrousel__x');
+    let carrousel__fleche_droite = document.querySelector('.carrousel__fleche_droite');
+    let carrousel__fleche_gauche = document.querySelector('.carrousel__fleche_gauche');
     let carrousel__figure = document.querySelector('.carrousel__figure');
     let carrousel__form = document.querySelector('.carrousel__form');
     let galerie = document.querySelector('.galerie');
@@ -18,6 +20,24 @@
     carrousel__x.addEventListener('mousedown', function () { 
         carrousel.classList.remove('carrousel--ouvrir')
     });
+
+    carrousel__fleche_droite.addEventListener('mousedown', function () {
+        index = index + 1;
+        afficher_image(index);
+        console.log(index);
+        if (index >= 6) {
+            index = 0;
+        }
+    })
+
+    carrousel__fleche_gauche.addEventListener('mousedown', function () {
+        index = index - 1;
+        afficher_image(index);
+        console.log(index);
+        if (index <= 0) {
+            index = 6;
+        }
+    })
 
     function remplir_carrousel() {
         for (const element of galerie__img) {
