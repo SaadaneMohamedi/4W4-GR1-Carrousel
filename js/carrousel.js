@@ -12,37 +12,61 @@
     let ancien_index = -1;
     let position = 0;
     let index = 0;
+    
+    remplir_carrousel();
 
     boutcarrousel__ouvrir.addEventListener('mousedown', function () { 
-        carrousel.classList.add('carrousel--ouvrir')
-        remplir_carrousel();
+        carrousel.classList.add('carrousel--ouvrir');
+        afficher_image(index);
     });
     carrousel__x.addEventListener('mousedown', function () { 
-        carrousel.classList.remove('carrousel--ouvrir')
+        carrousel.classList.remove('carrousel--ouvrir');
     });
 
     carrousel__fleche_droite.addEventListener('mousedown', function () {
-        index = index + 1;
+        if (index >= galerie__img.length - 1) {
+            index = 0;
+            console.log(index);
+        }
+        else {
+            index = index + 1;
+            console.log(index);
+        }
+
         afficher_image(index);
-        console.log(index);
-        if (index >= 6) {
+        /*index = index + 1;
+        if (index >= galerie__img.length - 1) {
             index = 0;
         }
-    })
-
-    carrousel__fleche_gauche.addEventListener('mousedown', function () {
-        index = index - 1;
+        
         afficher_image(index);
-        console.log(index);
+        console.log(index);*/
+    })
+    carrousel__fleche_gauche.addEventListener('mousedown', function () {
         if (index <= 0) {
-            index = 6;
+            index = galerie__img.length - 1;
+            console.log(index);
         }
+        else {
+            index = index - 1;
+            console.log(index);
+        }
+
+        afficher_image(index);
+        /*index = index - 1;
+        if (index < 0) {
+            index = galerie__img.length - 1;
+        }
+        
+        afficher_image(index);
+        console.log(index);*/
     })
 
     function remplir_carrousel() {
         for (const element of galerie__img) {
             element.dataset.index = position;
             element.addEventListener('mousedown', function () {
+                carrousel.classList.add('carrousel--ouvrir');
                 index = this.dataset.index;
                 afficher_image(index);
             });
@@ -69,6 +93,7 @@
         rad.addEventListener('mousedown', function(){
             index = this.dataset.index;
             afficher_image(index);
+            console.log(index);
         });
     }
 
