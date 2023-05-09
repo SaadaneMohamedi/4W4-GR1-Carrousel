@@ -118,13 +118,13 @@
         const windowWidth = window.innerWidth
         const windowHeight = window.innerHeight
       
-        let carrouselWidth = windowWidth 
+        let carrouselHeight = windowHeight
         if (windowWidth > 1000)
         {
-          carrouselWidth = windowWidth - windowWidth/2
+          carrouselHeight = windowHeight - windowHeight/2
         }
       
-        let carrouselHeight = carrouselWidth * imageHeight/imageWidth
+        let carrouselWidth = carrouselHeight * imageWidth/imageHeight
       
         carrousel.style.width = `${carrouselWidth}px`
         carrousel.style.height = `${carrouselHeight}px`
